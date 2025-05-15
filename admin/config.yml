@@ -5,6 +5,10 @@ backend:
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
+site_url: "https://tvuj-web.netlify.app"
+root_url: "/admin/"
+publish_mode: editorial_workflow
+
 collections:
   - name: "aktuality"
     label: "Aktuality"
