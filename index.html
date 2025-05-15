@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <title>Jógové studio</title>
   <link rel="stylesheet" href="style.css">
+  <script>
+    const params = new URLSearchParams(window.location.hash.slice(1));
+    const inviteToken = params.get("invite_token");
+    if (inviteToken) {
+      window.location.href = `/admin/#invite_token=${inviteToken}`;
+    }
+  </script>
+  
 </head>
 <body>
   <h1>Savasana studio</h1>
