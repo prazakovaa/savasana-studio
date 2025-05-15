@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html>
 <head>
-  <meta charset="UTF-8">
   <title>Aktuality</title>
-  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
   <h1>Aktuality</h1>
-  <div id="blog-posts"></div>
+  <div id="aktuality"></div>
 
   <script>
-    fetch('/admin/config.yml')
+    // Ukázkově načítá jeden soubor. Pro více souborů je potřeba rozšíření.
+    fetch('/content/aktuality/prvni-prispevek.md')
       .then(response => response.text())
-      .then(text => console.log("Netlify CMS config loaded")); // zatím jen test
+      .then(text => {
+        document.getElementById('aktuality').innerHTML = marked.parse(text);
+      });
   </script>
 </body>
 </html>
