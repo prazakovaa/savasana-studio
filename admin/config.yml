@@ -16,5 +16,9 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Nadpis", name: "title", widget: "string" }
-      - { label: "Obsah", name: "body", widget: "markdown" }
+      - label: "Nadpis"
+        name: "title"
+        widget: "string"
+      - label: "Obsah"
+        name: "body"
+        widget: "markdown"
