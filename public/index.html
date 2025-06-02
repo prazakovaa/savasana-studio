@@ -16,7 +16,26 @@
 <body>
   <h1>Savasana studio</h1>
   <p><a href="./aktuality.html">Aktuality</a></p>
+  <div id="posledni-aktualita">
+
+  </div>
   
-  <script src="script.js"></script>
+  <script>
+  fetch('data/aktuality.json')
+    .then(res => res.json())
+    .then(data => {
+      if(data.length > 0) {
+        const posledni = data[data.length - 1];  // poslední aktualita
+        const container = document.getElementById('posledni-aktualita');
+        container.innerHTML = `<h2>${posledni.title}</h2>${posledni.contentHtml}`;
+      } else {
+        document.getElementById('posledni-aktualita').textContent = 'Žádné aktuality.';
+      }
+    })
+    .catch(err => {
+      document.getElementById('posledni-aktualita').textContent = 'Nelze načíst aktuality.';
+      console.error(err);
+    });
+</script>
 </body>
 </html>
