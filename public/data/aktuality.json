@@ -1,12 +1,10 @@
 [
   {
-    "title": "První aktualita",
-    "contentHtml": "<p>Toto je první příspěvek do aktualit přes Netlify CMS.</p>\n",
-    "slug": "test"
+    "title": "---",
+    "contentHtml": "<h2>title: &quot;První aktualita&quot;\ndate: 2025-05-15</h2>\n<p>Toto je první příspěvek do aktualit přes Netlify CMS.</p>\n"
   },
   {
-    "title": "Zkouším jak to funguje",
-    "contentHtml": "<p>T﻿oto je můj pokus na první aktulitu, přidaný mnou:) <em>Nella</em></p>\n<p><img src=\"/images/uploads/img_3013.jpg\" alt=\"\"></p>\n",
-    "slug": "zkouším-jak-to-funguje"
+    "title": "---",
+    "contentHtml": "<h2>title: Zkouším jak to funguje</h2>\n<p>T﻿oto je můj pokus na první aktulitu, přidaný mnou:) <em>Nella</em></p>\n<p><img src=\"/images/uploads/img_3013.jpg\" alt=\"\"></p>\n"
   }
 ]

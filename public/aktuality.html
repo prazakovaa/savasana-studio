@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8" />
+<title>Aktuality</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<h1>Aktuality</h1>
+<div id="aktuality-container"></div>
+
+<script src="script.js"></script>
+<script>
+  // Po načtení dat z aktuality.json se vykreslí obsah
+  fetch('data/aktuality.json')
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById('aktuality-container');
+      data.forEach(item => {
+        const el = document.createElement('article');
+        el.innerHTML = '<h2>' + item.title + '</h2>' + item.contentHtml;
+        container.appendChild(el);
+      });
+    })
+    .catch(err => {
+      document.getElementById('aktuality-container').textContent = 'Chyba načítání aktualit.';
+      console.error(err);
+    });
+</script>
+
+</body>
+</html>
