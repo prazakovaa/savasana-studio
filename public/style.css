@@ -1,4 +1,4 @@
-#aktuality-container article h2 {
+#aktuality-container h2 {
   color: #2a9d8f;
   font-size: 1.8em;
   margin-bottom: 10px;
@@ -6,13 +6,13 @@
   padding-bottom: 5px;
 }
 
-#aktuality-container article p {
+#aktuality-container p {
   font-size: 1.1em;
   line-height: 1.4;
   color: #333;
 }
 
-#aktuality-container article img {
+#aktuality-container img {
   max-width: 500px;
   height: auto;
   border-radius: 8px;
