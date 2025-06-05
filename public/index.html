@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Jógové studio</title>
-  <link rel="stylesheet" href="../public/style.css">
+  <link rel="stylesheet" href="style.css">
   <script>
     const params = new URLSearchParams(window.location.hash.slice(1));
     const inviteToken = params.get("invite_token");
@@ -20,17 +20,25 @@
 
   </div>
   
-  <script>
+<script>
   fetch('data/aktuality.json')
     .then(res => res.json())
     .then(data => {
-      if(data.length > 0) {
-        const posledni = data[data.length - 1];  // poslední aktualita
-        const container = document.getElementById('posledni-aktualita');
-        container.innerHTML = `<h2>${posledni.title}</h2>${posledni.contentHtml}`;
-      } else {
-        document.getElementById('posledni-aktualita').textContent = 'Žádné aktuality.';
+      const container = document.getElementById('posledni-aktualita');
+
+      if (data.length === 0) {
+        container.textContent = 'Žádné aktuality.';
+        return;
       }
+
+      // Vezmi poslední 3 aktuality (od konce)
+      const posledniTri = data.slice(-3).reverse(); // reverse = nejnovější nahoře
+
+      posledniTri.forEach(item => {
+        const article = document.createElement('article');
+        article.innerHTML = `<h2>${item.title}</h2>${item.contentHtml}`;
+        container.appendChild(article);
+      });
     })
     .catch(err => {
       document.getElementById('posledni-aktualita').textContent = 'Nelze načíst aktuality.';

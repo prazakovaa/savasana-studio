@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8" />
 <title>Aktuality</title>
-<link rel="stylesheet" href="../public/style.css" />
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
 <h1>Aktuality</h1>
@@ -17,7 +17,7 @@
     .then(res => res.json())
     .then(data => {
       const container = document.getElementById('aktuality-container');
-      data.forEach(item => {
+      data.reverse().forEach(item => {
         const el = document.createElement('article');
         el.innerHTML = '<h2>' + item.title + '</h2>' + item.contentHtml;
         container.appendChild(el);
