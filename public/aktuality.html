@@ -12,15 +12,16 @@
 
 <script src="script.js"></script>
 <script>
-  // Po načtení dat z aktuality.json se vykreslí obsah
   fetch('data/aktuality.json')
     .then(res => res.json())
     .then(data => {
       const container = document.getElementById('aktuality-container');
-      data.reverse().forEach(item => {
-        const el = document.createElement('article');
-        el.innerHTML = '<h2>' + item.title + '</h2>' + item.contentHtml;
-        container.appendChild(el);
+      data.forEach(item => {
+        const article = document.createElement('article');
+        article.innerHTML = '<h2>' + item.title + '</h2>' +
+                            '<p><em>' + item.date + '</em></p>' +
+                            item.contentHtml;
+        container.appendChild(article);
       });
     })
     .catch(err => {

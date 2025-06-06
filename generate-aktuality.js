@@ -1,8 +1,14 @@
-const fsExtra = require("fs-extra");
-fsExtra.copySync("/images/uploads", "/public/images/uploads");
-
-const fs = require('fs');
 const path = require('path');
+const fs = require('fs-extra');
+
+// Zdrojová složka se fotkami:
+const sourceDir = path.join(__dirname, 'public', 'images', 'uploads');
+
+// Cílová složka, kam chceš fotky zkopírovat - třeba do public/images/kamkoliv
+const targetDir = path.join(__dirname, 'public', 'nějaká_cílová_složka'); // uprav podle potřeby
+
+fs.copySync(sourceDir, targetDir);
+
 const { marked } = require('marked');
 
 const contentDir = path.join(__dirname, 'content', 'aktuality');
