@@ -23,8 +23,15 @@
   display: none;
 }
 
+.only-mobile {
+  display: block;
+}
+
 @media (min-width: 760px) {
   .only-desktop {
     display: block;
   }
+  .only-mobile {
+  display: none;
+}
 }
