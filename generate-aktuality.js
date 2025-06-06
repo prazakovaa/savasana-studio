@@ -1,41 +1,24 @@
 const path = require('path');
 const fs = require('fs-extra');
-
-// Zdrojová složka se soubory .jpg z Netlify CMS
-const sourceDir = path.join(__dirname, 'public', 'images', 'uploads');
-
-// Fotky zkopírujeme zpátky tamtéž, nebo do záložního místa,
-// pokud chceš, třeba do složky 'public/data/uploads' (nepovinné)
-// Pokud nepotřebuješ kopírovat, můžeš tento krok i přeskočit.
-const targetDir = path.join(__dirname, 'public', 'images', 'uploads'); // stejná cesta, pokud jen ověřuješ přístup
-
-// Kopírování (pouze pokud cílová složka má být jiná)
-if (!fs.existsSync(sourceDir)) {
-  console.error(`Chybí složka ${sourceDir}`);
-  process.exit(1);
-}
-
 const { marked } = require('marked');
 
+// Cesty
 const contentDir = path.join(__dirname, 'content', 'aktuality');
 const publicDir = path.join(__dirname, 'public');
 const dataDir = path.join(publicDir, 'data');
+const jsonPath = path.join(dataDir, 'aktuality.json');
+const htmlPath = path.join(publicDir, 'aktuality.html');
 
+// Načti všechny .md soubory
 const files = fs.readdirSync(contentDir).filter(f => f.endsWith('.md'));
 
+// Zpracuj aktuality
 const aktuality = files.map(file => {
   const filepath = path.join(contentDir, file);
   const raw = fs.readFileSync(filepath, 'utf-8');
-
-  // Načti metadata a obsah
-  // Pokud nemáš front matter, můžeš přeskočit gray-matter
-  // const { data, content } = matter(raw);
-
-  // Načti čas poslední změny souboru (mtime)
   const stats = fs.statSync(filepath);
   const fileDate = stats.mtime.toISOString().split('T')[0]; // např. "2025-06-06"
 
-  // Titulek - první řádek s #
   const lines = raw.split('\n');
   const title = lines[0].replace(/^#\s*/, '').trim();
   const contentMd = lines.slice(1).join('\n').trim();
@@ -47,50 +30,55 @@ const aktuality = files.map(file => {
   };
 });
 
-// Seřaď sestupně podle data (nejnovější nahoře)
+// Seřaď sestupně podle data
 aktuality.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
-fs.writeFileSync(path.join(dataDir, 'aktuality.json'), JSON.stringify(aktuality, null, 2), 'utf-8');
+// Ulož JSON
+fs.ensureDirSync(dataDir);
+fs.writeFileSync(jsonPath, JSON.stringify(aktuality, null, 2), 'utf-8');
 
-// 5. Vygeneruj jednoduchou aktuality.html stránku do public/
-const aktualityHtml = `
-<!DOCTYPE html>
+// Vytvoř HTML stránku
+const aktualityHtml = `<!DOCTYPE html>
 <html lang="cs">
 <head>
-<meta charset="UTF-8" />
-<title>Aktuality</title>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <title>Aktuality</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<h1>Aktuality</h1>
-<div id="aktuality-container"></div>
+  <h1>Aktuality</h1>
+  <div id="posledni-aktuality"></div>
 
-<script src="script.js"></script>
-<script>
-  fetch('data/aktuality.json')
-    .then(res => res.json())
-    .then(data => {
-      const container = document.getElementById('aktuality-container');
-      data.forEach(item => {
-        const article = document.createElement('article');
-        article.innerHTML = '<h2>' + item.title + '</h2>' +
-                            '<p><em>' + item.date + '</em></p>' +
-                            item.contentHtml;
-        container.appendChild(article);
+  <script>
+    fetch('data/aktuality.json')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById('posledni-aktuality');
+
+        if (!data || data.length === 0) {
+          container.textContent = 'Žádné aktuality.';
+          return;
+        }
+
+        const poslednichPatnact = data.slice(0, 15); // prvních 15 nejnovějších
+        poslednichPatnact.forEach(item => {
+          const article = document.createElement('article');
+          article.innerHTML = \`<h2>\${item.title}</h2><p><em>\${item.date}</em></p>\${item.contentHtml}\`;
+          container.appendChild(article);
+        });
+      })
+      .catch(err => {
+        document.getElementById('posledni-aktuality').textContent = 'Nelze načíst aktuality.';
+        console.error(err);
       });
-    })
-    .catch(err => {
-      document.getElementById('aktuality-container').textContent = 'Chyba načítání aktualit.';
-      console.error(err);
-    });
-</script>
-
+  </script>
 </body>
 </html>
 `;
 
-// Ulož HTML stránku
-fs.writeFileSync(path.join(publicDir, 'aktuality.html'), aktualityHtml, 'utf-8');
+// Ulož HTML soubor
+fs.writeFileSync(htmlPath, aktualityHtml, 'utf-8');
 
-console.log('Aktuality vygenerovány.');
+console.log('✅ Aktuality úspěšně vygenerovány:');
+console.log('- JSON: ' + jsonPath);
+console.log('- HTML: ' + htmlPath);
