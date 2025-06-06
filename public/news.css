@@ -1,9 +1,14 @@
-#aktuality, #posledni-aktuality, #posledni-aktualita {
+#aktuality article , #posledni-aktuality article, #posledni-aktualita article {
   width: 300px;
   border: 1px solid black;
   border-radius: 5rem;
   color: black;
   overflow: hidden;
+}
+
+#aktuality, #posledni-aktuality, #posledni-aktualita {
+  display: flex;
+  gap: 10%;
 }
 
 #aktuality h2, #posledni-aktuality h2, #posledni-aktualita h2 {
