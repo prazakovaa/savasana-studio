@@ -1,38 +1,43 @@
 const fsExtra = require("fs-extra");
+fsExtra.copySync("images/uploads", "public/images/uploads");
+
 const fs = require('fs');
 const path = require('path');
-const matter = require('gray-matter');
 const { marked } = require('marked');
 
-// Cesty
 const contentDir = path.join(__dirname, 'content', 'aktuality');
 const publicDir = path.join(__dirname, 'public');
 const dataDir = path.join(publicDir, 'data');
-const imagesSrcDir = path.join(__dirname, 'images', 'uploads');
-const imagesDestDir = path.join(publicDir, 'images', 'uploads');
 
-// 1. Zkopíruj obrázky z content/images/uploads do public/images/uploads
-fsExtra.copySync(imagesSrcDir, imagesDestDir);
-
-// 2. Načti všechny .md soubory z content/aktuality/
 const files = fs.readdirSync(contentDir).filter(f => f.endsWith('.md'));
 
 const aktuality = files.map(file => {
   const filepath = path.join(contentDir, file);
   const raw = fs.readFileSync(filepath, 'utf-8');
-  const { data, content } = matter(raw);
+
+  // Načti metadata a obsah
+  // Pokud nemáš front matter, můžeš přeskočit gray-matter
+  // const { data, content } = matter(raw);
+
+  // Načti čas poslední změny souboru (mtime)
+  const stats = fs.statSync(filepath);
+  const fileDate = stats.mtime.toISOString().split('T')[0]; // např. "2025-06-06"
+
+  // Titulek - první řádek s #
+  const lines = raw.split('\n');
+  const title = lines[0].replace(/^#\s*/, '').trim();
+  const contentMd = lines.slice(1).join('\n').trim();
 
   return {
-    title: data.title || 'Bez názvu',
-    date: data.date || '1970-01-01',
-    contentHtml: marked(content)
+    title: title || 'Bez názvu',
+    date: fileDate,
+    contentHtml: marked(contentMd)
   };
 });
 
-// 3. Seřadit sestupně podle data (nejnovější první)
+// Seřaď sestupně podle data (nejnovější nahoře)
 aktuality.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-// 4. Ulož JSON do public/data/aktuality.json
 if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
 fs.writeFileSync(path.join(dataDir, 'aktuality.json'), JSON.stringify(aktuality, null, 2), 'utf-8');
 
