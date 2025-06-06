@@ -1,41 +1,42 @@
 const fsExtra = require("fs-extra");
-fsExtra.copySync("images/uploads", "public/images/uploads");
-
 const fs = require('fs');
 const path = require('path');
-const { marked } = require('marked'); // opravený import
+const matter = require('gray-matter');
+const { marked } = require('marked');
 
 // Cesty
 const contentDir = path.join(__dirname, 'content', 'aktuality');
 const publicDir = path.join(__dirname, 'public');
 const dataDir = path.join(publicDir, 'data');
+const imagesSrcDir = path.join(__dirname, 'images', 'uploads');
+const imagesDestDir = path.join(publicDir, 'images', 'uploads');
 
-// 1. Načti všechny .md soubory z content/aktuality/
+// 1. Zkopíruj obrázky z content/images/uploads do public/images/uploads
+fsExtra.copySync(imagesSrcDir, imagesDestDir);
+
+// 2. Načti všechny .md soubory z content/aktuality/
 const files = fs.readdirSync(contentDir).filter(f => f.endsWith('.md'));
 
 const aktuality = files.map(file => {
   const filepath = path.join(contentDir, file);
-  const text = fs.readFileSync(filepath, 'utf-8');
-
-  // Jednoduchý parse: první řádek nadpis (title), zbytek obsah
-  const lines = text.split('\n');
-  const title = lines[0].replace(/^#\s*/, '').trim();
-  const contentMd = lines.slice(1).join('\n').trim();
-
-  // Převod markdown -> HTML
-  const contentHtml = marked(contentMd);
+  const raw = fs.readFileSync(filepath, 'utf-8');
+  const { data, content } = matter(raw);
 
   return {
-    title,
-    contentHtml
+    title: data.title || 'Bez názvu',
+    date: data.date || '1970-01-01',
+    contentHtml: marked(content)
   };
 });
 
-// 2. Ulož JSON do public/data/aktuality.json
+// 3. Seřadit sestupně podle data (nejnovější první)
+aktuality.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+// 4. Ulož JSON do public/data/aktuality.json
 if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
 fs.writeFileSync(path.join(dataDir, 'aktuality.json'), JSON.stringify(aktuality, null, 2), 'utf-8');
 
-// 3. Vygeneruj jednoduchou aktuality.html stránku do public/
+// 5. Vygeneruj jednoduchou aktuality.html stránku do public/
 const aktualityHtml = `
 <!DOCTYPE html>
 <html lang="cs">
@@ -50,15 +51,16 @@ const aktualityHtml = `
 
 <script src="script.js"></script>
 <script>
-  // Po načtení dat z aktuality.json se vykreslí obsah
   fetch('data/aktuality.json')
     .then(res => res.json())
     .then(data => {
       const container = document.getElementById('aktuality-container');
       data.forEach(item => {
-        const el = document.createElement('article');
-        el.innerHTML = '<h2>' + item.title + '</h2>' + item.contentHtml;
-        container.appendChild(el);
+        const article = document.createElement('article');
+        article.innerHTML = '<h2>' + item.title + '</h2>' +
+                            '<p><em>' + item.date + '</em></p>' +
+                            item.contentHtml;
+        container.appendChild(article);
       });
     })
     .catch(err => {
@@ -71,7 +73,7 @@ const aktualityHtml = `
 </html>
 `;
 
-// Ulož aktuality
+// Ulož HTML stránku
 fs.writeFileSync(path.join(publicDir, 'aktuality.html'), aktualityHtml, 'utf-8');
 
 console.log('Aktuality vygenerovány.');
