@@ -1,13 +1,19 @@
 const path = require('path');
 const fs = require('fs-extra');
 
-// Zdrojová složka se fotkami:
+// Zdrojová složka se soubory .jpg z Netlify CMS
 const sourceDir = path.join(__dirname, 'public', 'images', 'uploads');
 
-// Cílová složka, kam chceš fotky zkopírovat - třeba do public/images/kamkoliv
-const targetDir = path.join(__dirname, 'public', 'nějaká_cílová_složka'); // uprav podle potřeby
+// Fotky zkopírujeme zpátky tamtéž, nebo do záložního místa,
+// pokud chceš, třeba do složky 'public/data/uploads' (nepovinné)
+// Pokud nepotřebuješ kopírovat, můžeš tento krok i přeskočit.
+const targetDir = path.join(__dirname, 'public', 'images', 'uploads'); // stejná cesta, pokud jen ověřuješ přístup
 
-fs.copySync(sourceDir, targetDir);
+// Kopírování (pouze pokud cílová složka má být jiná)
+if (!fs.existsSync(sourceDir)) {
+  console.error(`Chybí složka ${sourceDir}`);
+  process.exit(1);
+}
 
 const { marked } = require('marked');
 
