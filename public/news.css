@@ -1,38 +1,33 @@
-#aktuality article , #posledni-aktuality article, #posledni-aktualita article {
-  width: 300px;
-  border: 1px solid black;
-  border-radius: 5rem;
-  color: black;
-  overflow: hidden;
-}
+@layer init { 
 
-#aktuality, #posledni-aktuality, #posledni-aktualita {
-  display: flex;
-  gap: 10%;
-}
+  #aktuality article , #posledni-aktuality article, #posledni-aktualita article {
+    width: 30%;
+    border: 1px solid black;
+    border-radius: 1rem;
+    color: black;
+    overflow: hidden;
+  }
 
-#aktuality h2, #posledni-aktuality h2, #posledni-aktualita h2 {
-  font-size: 1.3em;
-}
+  #aktuality, #posledni-aktuality, #posledni-aktualita {
+    display: flex;
+    gap: 3%;
+  }
 
-#aktuality p, #posledni-aktuality p, #posledni-aktualita p {
-  margin: 1rem;
-}
+  #aktuality h2, #posledni-aktuality h2, #posledni-aktualita h2 {
+    font-size: 1.3em;
+  }
 
-#aktuality .date, #posledni-aktuality .date, #posledni-aktualita .date {
-  font-size: 0.5rem;
-  opacity: 50%;
-}
+  #aktuality p, #posledni-aktuality p, #posledni-aktualita p {
+    margin: 1rem;
+  }
 
-#aktuality img, #posledni-aktuality img, #posledni-aktualita img {
-  max-width: 500px;
-  height: auto;
-}
+  #aktuality .date, #posledni-aktuality .date, #posledni-aktualita .date {
+    font-size: 0.5rem;
+    opacity: 50%;
+  }
 
-.only-desktop { display: none; }
-.only-mobile { display: block; }
-
-@media (min-width: 1080px) {
-  .only-desktop { display: block; }
-  .only-mobile { display: none; }
+  #aktuality img, #posledni-aktuality img, #posledni-aktualita img {
+    max-width: 500px;
+    height: auto;
+  }
 }

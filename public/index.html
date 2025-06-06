@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Jógové studio</title>
-  <link rel="stylesheet" href="news.css" />
+  <link rel="stylesheet" href="style.css" />
   <script>
     const params = new URLSearchParams(window.location.hash.slice(1));
     const inviteToken = params.get("invite_token");
@@ -22,8 +22,16 @@
 
 
 
-  <div class="only-mobile" id="posledni-aktualita"></div>
-  <div class="only-desktop" id="posledni-aktuality"></div>
+  <section>
+    <div class="only-mobile">
+      <img src="/public/images/profile-pic.jpg" alt="">
+      <div id="posledni-aktualita"></div>
+    </div>
+
+    <div class="only-desktop">
+      <div id="posledni-aktuality"></div>
+    </div>
+  </section>
 
 
 

@@ -12,6 +12,11 @@
   {
     "title": "---",
     "date": "2025-06-06",
-    "contentHtml": "<h2>title: &quot;První aktualita&quot;\ndate: 2025-05-15</h2>\n<p>Toto je první příspěvek do aktualit přes Netlify CMS.</p>\n"
+    "contentHtml": "<h2>title: Jóga pro ženy</h2>\n<p>J﻿óga se nepraktikuje pouze na podložce, ale je to tam nejpohodlnější. :)<br>K﻿aždou neděli od 18:30 máme jógu pro ženy!</p>\n<p><img src=\"/images/uploads/ginny-rose-stewart-uxkcszrwm2s-unsplash.jpg\" alt=\"Žena dělající jógu\"></p>\n"
+  },
+  {
+    "title": "---",
+    "date": "2025-06-06",
+    "contentHtml": "<h2>title: smutne</h2>\n<p>c﻿hce se mi brečet</p>\n<p><img src=\"/images/uploads/img_3013.jpg\" alt=\"panáček lol\"></p>\n"
   }
 ]

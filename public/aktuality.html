@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <title>Aktuality</title>
-  <link rel="stylesheet" href="news.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1>Aktuality</h1>
-  <div id="posledni-aktuality"></div>
+  <div id="aktuality"></div>
 
   <script>
     fetch('data/aktuality.json')
@@ -23,7 +23,7 @@
         const poslednichPatnact = data.slice(-15).reverse(); // prvních 15 nejnovějších
         poslednichPatnact.forEach(item => {
           const article = document.createElement('article');
-          article.innerHTML = `<h2>${item.title}</h2><p class="date"><em>${item.date}</em></p>${item.contentHtml}`;
+          article.innerHTML = `<h2>${item.title}</h2><p><em>${item.date}</em></p>${item.contentHtml}`;
           container.appendChild(article);
         });
       })

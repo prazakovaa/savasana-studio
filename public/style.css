@@ -1,0 +1,27 @@
+@layer reset, typo, init, components, design, news;
+@import "normalize.css";
+@import "typography.css";
+@import "news.css";
+@layer init {
+	:root {
+		/*color-scheme: light dark;
+		color: light-dark(var(--color-dark), var(--color-light));
+		background-color: light-dark(var(--color-light), var(--color-dark));*/
+		--color-primary: #D95B06;
+		--color-secondary: #EF8D4B;
+		--color-light: #F7F7F7;
+		--color-dark: #000000;/*
+		--change-dark: light-dark(var(--color-dark), var(--color-light));
+		--change-light: light-dark(var(--color-light), var(--color-dark));
+		--gap: 2.5rem;
+		--gap-small: 1rem;*/
+	}
+
+    .only-desktop { display: none; }
+    .only-mobile { display: block; }
+
+    @media (min-width: 1080px) {
+    .only-desktop { display: block; }
+    .only-mobile { display: none; }
+    }
+}
