@@ -20,7 +20,7 @@
   fetch('data/aktuality.json')
     .then(res => res.json())
     .then(data => {
-      const container = document.getElementById('posledni-aktuality');
+      const container = document.getElementById('aktuality-container');
 
       if (data.length === 0) {
         container.textContent = 'Žádné aktuality.';
@@ -37,7 +37,7 @@
       });
     })
     .catch(err => {
-      document.getElementById('posledni-aktuality').textContent = 'Nelze načíst aktuality.';
+      document.getElementById('aktuality-container').textContent = 'Nelze načíst aktuality.';
       console.error(err);
     });
 </script>
