@@ -60,7 +60,7 @@ const aktualityHtml = `<!DOCTYPE html>
           return;
         }
 
-        const poslednichPatnact = data.slice(0, 15); // prvních 15 nejnovějších
+        const poslednichPatnact = data.slice(-3).reverse(); // prvních 15 nejnovějších
         poslednichPatnact.forEach(item => {
           const article = document.createElement('article');
           article.innerHTML = \`<h2>\${item.title}</h2><p><em>\${item.date}</em></p>\${item.contentHtml}\`;
