@@ -16,38 +16,31 @@
 
 
 <script src="script.js"></script>
+
 <script>
-fetch('data/aktuality.json')
-  .then(res => res.json())
-  .then(data => {
-    const container = document.getElementById('aktuality-container');
+  fetch('data/aktuality.json')
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById('aktuality-container');
 
-    if (data.length === 0) {
-      container.textContent = 'Žádné aktuality.';
-      return;
-    }
+      if (data.length === 0) {
+        container.textContent = 'Žádné aktuality.';
+        return;
+      }
 
-    // Seřadit data podle data sestupně (nejnovější první)
-    const sorted = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+      // Vezmi poslední 3 aktuality (od konce)
+      const posledniTri = data.slice(-5).reverse(); // reverse = nejnovější nahoře
 
-    // Vezmi prvních 15 z nich (už jsou od nejnovějších)
-    const omezeni = sorted.slice(0, 15);
-
-    // Vymažeme obsah před vykreslením (pokud chceš)
-    container.innerHTML = '';
-
-    omezeni.forEach(item => {
-      const article = document.createElement('article');
-      article.innerHTML = `<h2>${item.title}</h2><p><em>${item.date}</em></p>${item.contentHtml}`;
-      container.appendChild(article);
+      posledniTri.forEach(item => {
+        const article = document.createElement('article');
+        article.innerHTML = `<h2>${item.title}</h2><p><em>${item.date}</em></p>${item.contentHtml}`;
+        container.appendChild(article);
+      });
+    })
+    .catch(err => {
+      document.getElementById('aktuality-container').textContent = 'Nelze načíst aktuality.';
+      console.error(err);
     });
-  })
-  .catch(err => {
-    const container = document.getElementById('aktuality-container');
-    container.textContent = 'Nelze načíst aktuality.';
-    console.error(err);
-  });
-
 </script>
 
 </body>
