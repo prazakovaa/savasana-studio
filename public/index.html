@@ -22,15 +22,42 @@
 
 
 
-  <div id="posledni-aktualita"> </div>
+  <div id="posledni-aktualita"></div>
+  <div class="only-desktop" id="posledni-aktuality"></div>
 
-    <a class="btn btn--white" href="/aktuality.html">aktuality</a>
-  
+  <a class="btn btn--white" href="/aktuality.html">aktuality</a>
+
+
 <script>
   fetch('data/aktuality.json')
     .then(res => res.json())
     .then(data => {
       const container = document.getElementById('posledni-aktualita');
+
+      if (data.length === 0) {
+        container.textContent = 'Žádné aktuality.';
+        return;
+      }
+
+      // Seřaď data podle data sestupně (nejnovější první)
+      const sorted = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+      const nejnovejsi = sorted[0];
+
+      const article = document.createElement('article');
+      article.innerHTML = `<h2>${nejnovejsi.title}</h2><p><em>${nejnovejsi.date}</em></p>${nejnovejsi.contentHtml}`;
+      container.appendChild(article);
+    })
+    .catch(err => {
+      document.getElementById('posledni-aktualita').textContent = 'Nelze načíst aktuality.';
+      console.error(err);
+    });
+</script>
+
+<script>
+  fetch('data/aktuality.json')
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById('posledni-aktuality');
 
       if (data.length === 0) {
         container.textContent = 'Žádné aktuality.';
@@ -47,12 +74,9 @@
       });
     })
     .catch(err => {
-      document.getElementById('posledni-aktualita').textContent = 'Nelze načíst aktuality.';
+      document.getElementById('posledni-aktuality').textContent = 'Nelze načíst aktuality.';
       console.error(err);
     });
 </script>
-
-
-
 </body>
 </html>
