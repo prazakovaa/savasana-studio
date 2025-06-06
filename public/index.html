@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Jógové studio</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="news.css" />
   <script>
     const params = new URLSearchParams(window.location.hash.slice(1));
     const inviteToken = params.get("invite_token");
@@ -42,7 +42,7 @@
       const posledniPridana = data[data.length - 1];
 
       const article = document.createElement('article');
-      article.innerHTML = `<h2>${posledniPridana.title}</h2><p><em>${posledniPridana.date}</em></p>${posledniPridana.contentHtml}`;
+      article.innerHTML = `<h2>${posledniPridana.title}</h2><p class="date"><em>${posledniPridana.date}</em></p>${posledniPridana.contentHtml}`;
       container.appendChild(article);
     })
     .catch(err => {
@@ -67,7 +67,7 @@
 
       posledniTri.forEach(item => {
         const article = document.createElement('article');
-        article.innerHTML = `<h2>${item.title}</h2><p><em>${item.date}</em></p>${item.contentHtml}`;
+        article.innerHTML = `<h2>${item.title}</h2><p class="date"><em>${item.date}</em></p>${item.contentHtml}`;
         container.appendChild(article);
       });
     })

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Aktuality</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="news.css" />
 </head>
 <body>
   <h1>Aktuality</h1>
@@ -13,7 +13,7 @@
     fetch('data/aktuality.json')
       .then(res => res.json())
       .then(data => {
-        const container = document.getElementById('posledni-aktuality');
+        const container = document.getElementById('aktuality');
 
         if (!data || data.length === 0) {
           container.textContent = 'Žádné aktuality.';
@@ -23,12 +23,12 @@
         const poslednichPatnact = data.slice(-15).reverse(); // prvních 15 nejnovějších
         poslednichPatnact.forEach(item => {
           const article = document.createElement('article');
-          article.innerHTML = `<h2>${item.title}</h2><p><em>${item.date}</em></p>${item.contentHtml}`;
+          article.innerHTML = `<h2>${item.title}</h2><p class="date"><em>${item.date}</em></p>${item.contentHtml}`;
           container.appendChild(article);
         });
       })
       .catch(err => {
-        document.getElementById('posledni-aktuality').textContent = 'Nelze načíst aktuality.';
+        document.getElementById('aktuality').textContent = 'Nelze načíst aktuality.';
         console.error(err);
       });
   </script>

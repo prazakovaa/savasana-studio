@@ -47,13 +47,13 @@ const aktualityHtml = `<!DOCTYPE html>
 </head>
 <body>
   <h1>Aktuality</h1>
-  <div id="vsechny-aktuality"></div>
+  <div id="aktuality"></div>
 
   <script>
     fetch('data/aktuality.json')
       .then(res => res.json())
       .then(data => {
-        const container = document.getElementById('vsechny-aktuality');
+        const container = document.getElementById('aktuality');
 
         if (!data || data.length === 0) {
           container.textContent = 'Žádné aktuality.';
@@ -68,7 +68,7 @@ const aktualityHtml = `<!DOCTYPE html>
         });
       })
       .catch(err => {
-        document.getElementById('vsechny-aktuality').textContent = 'Nelze načíst aktuality.';
+        document.getElementById('aktuality').textContent = 'Nelze načíst aktuality.';
         console.error(err);
       });
   </script>

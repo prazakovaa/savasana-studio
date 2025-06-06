@@ -1,0 +1,33 @@
+#aktuality, #posledni-aktuality, #posledni-aktualita {
+  width: 300px;
+  border: 1px solid black;
+  border-radius: 5rem;
+  color: black;
+  overflow: hidden;
+}
+
+#aktuality h2, #posledni-aktuality h2, #posledni-aktualita h2 {
+  font-size: 1.3em;
+}
+
+#aktuality p, #posledni-aktuality p, #posledni-aktualita p {
+  margin: 1rem;
+}
+
+#aktuality .date, #posledni-aktuality .date, #posledni-aktualita .date {
+  font-size: 0.5rem;
+  opacity: 50%;
+}
+
+#aktuality img, #posledni-aktuality img, #posledni-aktualita img {
+  max-width: 500px;
+  height: auto;
+}
+
+.only-desktop { display: none; }
+.only-mobile { display: block; }
+
+@media (min-width: 1080px) {
+  .only-desktop { display: block; }
+  .only-mobile { display: none; }
+}
