@@ -1,3 +1,6 @@
+const fsExtra = require("fs-extra");
+fsExtra.copySync("images/uploads", "public/images/uploads");
+
 const fs = require('fs');
 const path = require('path');
 const { marked } = require('marked'); // opravený import
