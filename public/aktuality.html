@@ -17,7 +17,7 @@
 
 <script src="script.js"></script>
 <script>
-  fetch('data/aktuality.json')
+fetch('data/aktuality.json')
   .then(res => res.json())
   .then(data => {
     const container = document.getElementById('aktuality-container');
@@ -30,8 +30,11 @@
     // Seřadit data podle data sestupně (nejnovější první)
     const sorted = data.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-    // Vzít prvních 15
+    // Vezmi prvních 15 z nich (už jsou od nejnovějších)
     const omezeni = sorted.slice(0, 15);
+
+    // Vymažeme obsah před vykreslením (pokud chceš)
+    container.innerHTML = '';
 
     omezeni.forEach(item => {
       const article = document.createElement('article');
@@ -44,6 +47,7 @@
     container.textContent = 'Nelze načíst aktuality.';
     console.error(err);
   });
+
 </script>
 
 </body>
