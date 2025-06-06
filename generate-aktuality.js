@@ -47,20 +47,20 @@ const aktualityHtml = `<!DOCTYPE html>
 </head>
 <body>
   <h1>Aktuality</h1>
-  <div id="posledni-aktuality"></div>
+  <div id="vsechny-aktuality"></div>
 
   <script>
     fetch('data/aktuality.json')
       .then(res => res.json())
       .then(data => {
-        const container = document.getElementById('posledni-aktuality');
+        const container = document.getElementById('vsechny-aktuality');
 
         if (!data || data.length === 0) {
           container.textContent = 'Žádné aktuality.';
           return;
         }
 
-        const poslednichPatnact = data.slice(-3).reverse(); // prvních 15 nejnovějších
+        const poslednichPatnact = data.slice(-15).reverse(); // prvních 15 nejnovějších
         poslednichPatnact.forEach(item => {
           const article = document.createElement('article');
           article.innerHTML = \`<h2>\${item.title}</h2><p><em>\${item.date}</em></p>\${item.contentHtml}\`;
@@ -68,7 +68,7 @@ const aktualityHtml = `<!DOCTYPE html>
         });
       })
       .catch(err => {
-        document.getElementById('posledni-aktuality').textContent = 'Nelze načíst aktuality.';
+        document.getElementById('vsechny-aktuality').textContent = 'Nelze načíst aktuality.';
         console.error(err);
       });
   </script>
