@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs-extra');
 const { marked } = require('marked');
+const matter = require('gray-matter');
 
 // Cesty
 const contentDir = path.join(__dirname, 'content', 'aktuality');
@@ -17,16 +18,18 @@ const aktuality = files.map(file => {
   const filepath = path.join(contentDir, file);
   const raw = fs.readFileSync(filepath, 'utf-8');
   const stats = fs.statSync(filepath);
-  const fileDate = stats.mtime.toISOString().split('T')[0]; // např. "2025-06-06"
 
-  const lines = raw.split('\n');
-  const title = lines[0].replace(/^#\s*/, '').trim();
-  const contentMd = lines.slice(1).join('\n').trim();
+  const parsed = matter(raw);
+  const title = parsed.data.title || 'Bez názvu';
+  const image = parsed.data.image || null;
+  const date = parsed.data.date || stats.mtime.toISOString().split('T')[0];
+  const contentHtml = marked(parsed.content.trim());
 
   return {
-    title: title || 'Bez názvu',
-    date: fileDate,
-    contentHtml: marked(contentMd)
+    title,
+    image,
+    date,
+    contentHtml
   };
 });
 
@@ -60,10 +63,21 @@ const aktualityHtml = `<!DOCTYPE html>
           return;
         }
 
-        const poslednichPatnact = data.slice(-15).reverse(); // prvních 15 nejnovějších
+        const poslednichPatnact = data.slice(-15).reverse();
         poslednichPatnact.forEach(item => {
           const article = document.createElement('article');
-          article.innerHTML = \`<h2>\${item.title}</h2><p><em>\${item.date}</em></p>\${item.contentHtml}\`;
+
+          let imageHtml = '';
+          if (item.image) {
+            imageHtml = \`<img src="\${item.image}" alt="" class="aktualita-img" />\`;
+          }
+
+          article.innerHTML = \`
+            <h2>\${item.title}</h2>
+            <p><em>\${item.date}</em></p>
+            \${imageHtml}
+            \${item.contentHtml}
+          \`;
           container.appendChild(article);
         });
       })
@@ -76,7 +90,7 @@ const aktualityHtml = `<!DOCTYPE html>
 </html>
 `;
 
-// Ulož HTML soubor
+// Ulož HTML
 fs.writeFileSync(htmlPath, aktualityHtml, 'utf-8');
 
 console.log('✅ Aktuality úspěšně vygenerovány:');

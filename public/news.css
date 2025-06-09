@@ -27,7 +27,7 @@
   }
 
   #aktuality img, #posledni-aktuality img, #posledni-aktualita img {
-    max-width: 500px;
+    width: 100%;
     height: auto;
   }
 }
