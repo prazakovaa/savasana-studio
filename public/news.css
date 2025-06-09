@@ -1,11 +1,32 @@
 @layer init { 
 
-  #aktuality article , #posledni-aktuality article, #posledni-aktualita article {
+  .aktuality {
     width: 30%;
     border: 1px solid black;
     border-radius: 1rem;
     color: black;
     overflow: hidden;
+  }
+
+  .aktuality__header {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem;
+    text-align: start;
+  }
+
+  .header-text p {
+    margin: 0.3rem;
+  }
+
+  .author {
+    font-size: 0.8rem;
+    opacity: 70%;
+  }
+
+  h2 + p, .date {
+    font-size: 0.5rem;
+    opacity: 50%;
   }
 
   #aktuality, #posledni-aktuality, #posledni-aktualita {
@@ -21,9 +42,10 @@
     margin: 1rem;
   }
 
-  #aktuality .date, #posledni-aktuality .date, #posledni-aktualita .date {
-    font-size: 0.5rem;
-    opacity: 50%;
+
+  p img {
+    width: 1rem;
+    height: auto;
   }
 
   #aktuality img, #posledni-aktuality img, #posledni-aktualita img {

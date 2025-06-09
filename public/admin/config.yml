@@ -22,3 +22,7 @@ collections:
       - label: "Obsah"
         name: "body"
         widget: "markdown"
+      - label: "Obrázek"
+        name: "image"
+        widget: "image"
+        required: false
