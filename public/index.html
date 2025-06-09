@@ -45,33 +45,27 @@
   fetch('data/aktuality.json')
     .then(res => res.json())
     .then(data => {
-      const container = document.getElementById('aktuality');
+      const container = document.getElementById('posledni-aktuality');
 
-      if (!data || data.length === 0) {
+      if (data.length === 0) {
         container.textContent = 'Žádné aktuality.';
         return;
       }
 
-      const poslednichPatnact = data.slice(-1).reverse();
-      poslednichPatnact.forEach(item => {
+      // Vezmi poslední 3 aktuality (od konce)
+      const posledniTri = data.slice(-1).reverse(); // reverse = nejnovější nahoře
+
+      posledniTri.forEach(item => {
         const article = document.createElement('article');
-
-        let imageHtml = '';
-        if (item.image) {
-          imageHtml = `<img src="${item.image}" alt="" class="aktualita-img" />`;
-        }
-
         article.innerHTML = `
-          <h2>${item.title}</h2>
-          <p class="date"><em>${item.date}</em></p>
-          ${imageHtml}
-          ${item.contentHtml}
-        `;
+                              <h2>${item.title}</h2>
+                              <p class="date"><em>${item.date}</em></p>
+                              ${item.contentHtml}`;
         container.appendChild(article);
       });
     })
     .catch(err => {
-      document.getElementById('aktuality').textContent = 'Nelze načíst aktuality.';
+      document.getElementById('posledni-aktuality').textContent = 'Nelze načíst aktuality.';
       console.error(err);
     });
 </script>
@@ -80,33 +74,27 @@
   fetch('data/aktuality.json')
     .then(res => res.json())
     .then(data => {
-      const container = document.getElementById('aktuality');
+      const container = document.getElementById('posledni-aktuality');
 
-      if (!data || data.length === 0) {
+      if (data.length === 0) {
         container.textContent = 'Žádné aktuality.';
         return;
       }
 
-      const poslednichPatnact = data.slice(-3).reverse();
-      poslednichPatnact.forEach(item => {
+      // Vezmi poslední 3 aktuality (od konce)
+      const posledniTri = data.slice(-3).reverse(); // reverse = nejnovější nahoře
+
+      posledniTri.forEach(item => {
         const article = document.createElement('article');
-
-        let imageHtml = '';
-        if (item.image) {
-          imageHtml = `<img src="${item.image}" alt="" class="aktualita-img" />`;
-        }
-
         article.innerHTML = `
-          <h2>${item.title}</h2>
-          <p class="date"><em>${item.date}</em></p>
-          ${imageHtml}
-          ${item.contentHtml}
-        `;
+                              <h2>${item.title}</h2>
+                              <p class="date"><em>${item.date}</em></p>
+                              ${item.contentHtml}`;
         container.appendChild(article);
       });
     })
     .catch(err => {
-      document.getElementById('aktuality').textContent = 'Nelze načíst aktuality.';
+      document.getElementById('posledni-aktuality').textContent = 'Nelze načíst aktuality.';
       console.error(err);
     });
 </script>
