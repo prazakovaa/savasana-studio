@@ -1,17 +1,17 @@
 @layer init { 
   .aktuality {
     display: flex;
-    gap: 15%;
     justify-items: center;
   }
   .aktuality article {
-    max-width: 500px;
+    max-width: 450px;
     width: 30%;
     height: auto;
     border: 1px solid black;
     border-radius: 1rem;
     color: black;
     overflow: hidden;
+    margin: 1rem;
   }
   .aktuality__header {
     display: flex;
@@ -38,11 +38,11 @@
 
   .aktuality-content {
     display: flex;
-    gap: 3%;
   }
 
   .aktuality-content h2 {
     font-size: 1.3em;
+    margin-left: 1rem;
   }
 
   .aktuality-content p {
