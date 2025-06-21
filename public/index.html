@@ -14,38 +14,67 @@
 </head>
 
 
-<body>
-  <p>Pro lidi se zájmem o zdravý pohyb</p>
-  <h1>Šavásána studio</h1>
-  <a class="btn btn--white" href="#">rezervace</a>
-  <a class="btn btn--white" href="/aktuality.html">aktuality</a>
-
-
-
-  <section>
-    <div class="aktuality only-mobile">
-      <div class="aktuality__header">
-        <img class="profile-pic" src="/images/profile-pic.jpg" alt="Žena v jógové pozici">
-        <div class="header-text">
-          <p>To nejnovější!</p>
-          <p class="author">Šavásana studio</p>
+<body class="page">
+  <header class="page__header header--diff">
+			<div class="page__header-intro">
+				<nav>
+					<menu class="intro__nav">
+							<li><a class="menu" href="/index.html">Domů</a></li>
+              <li> <a class="menu" href="/index.html">Kodex studia</a></li>
+              <li> <a class="menu" href="/index.html">Lekce</a></li>
+              <span class="logo-nav"></span>
+              <li> <a class="menu" href="/index.html">O nás</a></li>
+              <li> <a class="menu" href="/aktuality.html">Aktuality</a></li>
+              <li> <a class="menu" href="/index.html">Kontakt</a></li>
+					</menu>
+				</nav>
+        <div class="intro__text">
+          <p>Pro lidi se zájem o zdravý pohyb.</p>
+          <h1>Šavásana</h1>
+          <span class="h1">studio</span>
+          <a class="btn btn--white" href="#">Rezervace</a>
         </div>
+			</div>
+
+  <main class="page__content">
+    <h2><span class="fancy-text">Dýchej.</span> Vše ostatní přijde samo.</h2>
+    <article class="info-article">
+      <img src="" alt="Žena meditující v přírodě.">
+      <h3>Jóga jako prostor pro sebe</h3>
+      <p>Jóga není jen cvičení na podložce. Je to tisíceletá filozofie, která propojuje tělo, dech a mysl. Učí nás zpomalit, vnímat přítomný okamžik a najít vnitřní rovnováhu. Ať už hledáte...</p>
+      <a class="link" href="#">Číst celý článek</a>
+    </article>
+    <section>
+      <div class="aktuality only-mobile">
+        <div class="aktuality__header">
+          <img class="profile-pic" src="/images/profile-pic.jpg" alt="Žena v jógové pozici">
+          <div class="header-text">
+            <p>To nejnovější!</p>
+            <p class="author">Šavásana studio</p>
+          </div>
+        </div>
+        <div id="posledni-aktualita"></div>
       </div>
-      <div id="posledni-aktualita"></div>
-    </div>
 
-    <div class="aktuality only-desktop">
-      <div id="posledni-aktuality"></div>
-    </div>
-  </section>
-
+      <div class="aktuality only-desktop">
+        <div class="aktuality__header">
+          <img class="profile-pic" src="/images/profile-pic.jpg" alt="Žena v jógové pozici">
+          <div class="header-text">
+            <p>To nejnovější!</p>
+            <p class="author">Šavásana studio</p>
+          </div>
+        </div>
+        <div id="posledni-aktuality"></div>
+      </div>
+    </section>
+  </main>
 
 
 <script>
   fetch('data/aktuality.json')
     .then(res => res.json())
     .then(data => {
-      const container = document.getElementById('posledni-aktuality');
+      const container = document.getElementById('posledni-aktualita');
 
       if (data.length === 0) {
         container.textContent = 'Žádné aktuality.';
@@ -58,14 +87,20 @@
       posledniTri.forEach(item => {
         const article = document.createElement('article');
         article.innerHTML = `
-                              <h2>${item.title}</h2>
-                              <p class="date"><em>${item.date}</em></p>
-                              ${item.contentHtml}`;
-        container.appendChild(article);
+          <div class="aktuality__header">
+            <img class="profile-pic" src="/images/profile-pic.jpg" alt="Žena v jógové pozici">
+            <div class="header-text">
+              <p>To nejnovější!</p>
+              <p class="author">Šavásana studio</p>
+            </div>
+          </div>
+          <h2>${item.title}</h2>
+          <p class="date"><em>${item.date}</em></p>
+          ${item.contentHtml}`;
       });
     })
     .catch(err => {
-      document.getElementById('posledni-aktuality').textContent = 'Nelze načíst aktuality.';
+      document.getElementById('posledni-aktualita').textContent = 'Nelze načíst aktuality.';
       console.error(err);
     });
 </script>
@@ -87,9 +122,16 @@
       posledniTri.forEach(item => {
         const article = document.createElement('article');
         article.innerHTML = `
-                              <h2>${item.title}</h2>
-                              <p class="date"><em>${item.date}</em></p>
-                              ${item.contentHtml}`;
+  <div class="aktuality__header">
+    <img class="profile-pic" src="/images/profile-pic.jpg" alt="Žena v jógové pozici">
+    <div class="header-text">
+      <p>To nejnovější!</p>
+      <p class="author">Šavásana studio</p>
+    </div>
+  </div>
+  <h2>${item.title}</h2>
+  <p class="date"><em>${item.date}</em></p>
+  ${item.contentHtml}`;
         container.appendChild(article);
       });
     })
