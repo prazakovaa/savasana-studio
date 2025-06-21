@@ -1,27 +1,34 @@
 @layer init { 
-
   .aktuality {
+    display: flex;
+    gap: 15%;
+    justify-items: center;
+  }
+  .aktuality article {
+    max-width: 500px;
     width: 30%;
+    height: auto;
     border: 1px solid black;
     border-radius: 1rem;
     color: black;
     overflow: hidden;
   }
-
   .aktuality__header {
     display: flex;
     gap: 1rem;
     margin: 1rem;
     text-align: start;
   }
-
-  .header-text p {
+  #posledni-aktualita article {
+    width: 100%;
+  }
+  .aktuality-content .header-text p {
     margin: 0.3rem;
   }
 
   .author {
     font-size: 0.8rem;
-    opacity: 70%;
+    opacity: 60%;
   }
 
   h2 + p, .date {
@@ -29,27 +36,27 @@
     opacity: 50%;
   }
 
-  #aktuality, #posledni-aktuality, #posledni-aktualita {
+  .aktuality-content {
     display: flex;
     gap: 3%;
   }
 
-  #aktuality h2, #posledni-aktuality h2, #posledni-aktualita h2 {
+  .aktuality-content h2 {
     font-size: 1.3em;
   }
 
-  #aktuality p, #posledni-aktuality p, #posledni-aktualita p {
+  .aktuality-content p {
     margin: 1rem;
   }
 
-
-  p img {
-    width: 1rem;
-    height: auto;
-  }
-
-  #aktuality img, #posledni-aktuality img, #posledni-aktualita img {
+  .aktuality-content img {
     width: 100%;
     height: auto;
+  }
+  .aktuality-content .profile-pic {
+		width: 2.5rem;
+		height: 2.5rem;
+		margin: auto 0;
+		border-radius: 20rem;
   }
 }

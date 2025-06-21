@@ -35,6 +35,7 @@
           <a class="btn btn--white" href="#">Rezervace</a>
         </div>
 			</div>
+  </header>
 
   <main class="page__content">
     <h2><span class="fancy-text">Dýchej.</span> Vše ostatní přijde samo.</h2>
@@ -46,25 +47,11 @@
     </article>
     <section>
       <div class="aktuality only-mobile">
-        <div class="aktuality__header">
-          <img class="profile-pic" src="/images/profile-pic.jpg" alt="Žena v jógové pozici">
-          <div class="header-text">
-            <p>To nejnovější!</p>
-            <p class="author">Šavásana studio</p>
-          </div>
-        </div>
-        <div id="posledni-aktualita"></div>
+        <div class="aktuality-content" id="posledni-aktualita"></div>
       </div>
 
       <div class="aktuality only-desktop">
-        <div class="aktuality__header">
-          <img class="profile-pic" src="/images/profile-pic.jpg" alt="Žena v jógové pozici">
-          <div class="header-text">
-            <p>To nejnovější!</p>
-            <p class="author">Šavásana studio</p>
-          </div>
-        </div>
-        <div id="posledni-aktuality"></div>
+        <div class="aktuality-content" id="posledni-aktuality"></div>
       </div>
     </section>
   </main>
@@ -97,6 +84,7 @@
           <h2>${item.title}</h2>
           <p class="date"><em>${item.date}</em></p>
           ${item.contentHtml}`;
+          container.appendChild(article);
       });
     })
     .catch(err => {
@@ -125,7 +113,7 @@
   <div class="aktuality__header">
     <img class="profile-pic" src="/images/profile-pic.jpg" alt="Žena v jógové pozici">
     <div class="header-text">
-      <p>To nejnovější!</p>
+      <p>Poslední aktuality</p>
       <p class="author">Šavásana studio</p>
     </div>
   </div>
