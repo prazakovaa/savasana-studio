@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Birthstone+Bounce&display=swap');
 @layer typo {
 	:root {
 		font-family: "Manrope", Helvetica, Arial, sans-serif;
@@ -10,13 +11,20 @@
 	}
 
     p {
-    font-size: 16px;
+		font-size: 1rem;
+		white-space: normal;
     }
     	li {
 		list-style: none;
 	}
 	a {
 		display: inline-block;
+		width: auto;
 		text-decoration: none;
+	}
+	.fancy-text {
+  		font-family: 'Birthstone Bounce', 'Brush Script MT', cursive;
+  		font-weight: 400;
+  		font-style: normal;
 	}
 }

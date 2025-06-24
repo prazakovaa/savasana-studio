@@ -1,7 +1,8 @@
-@layer reset, typo, init, components, design, news;
+@layer reset, typo, init, components, design, news, hamburger;
 @import "normalize.css";
 @import "typography.css";
 @import "news.css";
+@import "hamburger.css";
 @layer init {
 	:root {
 		/*color-scheme: light dark;
@@ -33,6 +34,19 @@
     }
 }
 @layer components {
+	.btn {
+		display: inline-block;
+		padding: 0.7rem 2rem;
+		border-radius: 5px;
+		border: 3px solid var(--color-primary);
+		color: var(--color-primary);
+		max-width: max-content;
+		margin: 0 auto;
+	}
+	.btn--white{
+		border: 3px solid var(--color-light);
+		color: var(--color-light);
+	}
 	.image--responsive {
 		width: 100%;
 		display: block;
@@ -51,25 +65,59 @@
 @layer design {
 
 	.page__header{
-		height: 85vh;
+		height: 80vh;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		background-image: 
-			radial-gradient(97.33% 90.41% at 76.51% 0%, rgba(115, 115, 115, 0.00) 0%, #F5F5F5 100%),
-			url('/public/images/uploads/img_3013.jpg');                                      /* spodní vrstva */
+		background:
+  			linear-gradient(172deg, rgba(255, 255, 255, 0.97) 34.54%, rgba(115, 115, 115, 0.00) 149.84%),
+  			url('/images/header-bg.jpg');                                
 		background-size: cover;
 		background-position: center;
+		padding: 1.5rem;
 	}
-	.intro__nav {
+	.header__nav {
 		all: unset;
 		display: flex;
-		gap: 2rem;
-		padding: 0;
-		margin-top: 3rem;
-		width: 70%;
-		justify-self: center;
-		justify-content: center;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.header__main{
+		color: var(--color-secondary);
+		height: 60vh;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+	.header__main p {
+		font-size: 0.8rem;
+		margin: 0;
+	}
+	.header__main h1 {
+		font-family: Bellefair;
+		font-size: 3rem;
+		font-weight: 400;
+		margin: 0;
+		color: var(--color-primary);
+		position: relative;
+		margin: 0 1rem 1rem 0;
+		display: inline-block;
+	}
+	.header__main span {
+		color: var(--color-secondary);
+		position: absolute;
+  		left: 77%;
+  		top: 45%;
+	}
+	.header-bottom {
+		display: flex;
+		flex-direction: column;
+		height: 22vh;
+		justify-content: space-between;
+	}
+	.header-logo-img{
+		width: 5rem;
 	}
 	.logo-nav {
 		width: 100px;
