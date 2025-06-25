@@ -1,0 +1,57 @@
+@layer swiper {
+
+    .swiper {
+    width: 97%;
+    height: 500px; /* nebo co potřebuješ */
+    position: relative;
+    }
+
+    .swiper-slide {
+        padding: 0 15%;
+        box-sizing: border-box;
+    }
+
+    .article-card {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .article-card img{
+        height: 180px;
+    }
+    .swiper-slide .article-text {
+        height: 270px;
+    }
+
+    .swiper-pagination-bullet-active {
+        background-color: var(--color-primary);  /* např. modrá */
+        filter: invert(100%);
+    }
+
+    .swiper {
+  position: relative;
+  overflow: hidden;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 40px; /* nebo dle potřeby */
+  height: 40px;
+  color: var(--color-primary); /* Změní barvu SVG šipek */
+        filter: invert(100%); /* změní barvu, pokud jsou ve formě obrázku */
+}
+
+.swiper-button-prev {
+  left: 10px;
+}
+
+.swiper-button-next {
+  right: 10px;
+}
+    
+
+}

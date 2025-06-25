@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jógové studio</title>
   <link rel="stylesheet" href="styles/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
 </head>
 
 
@@ -51,7 +52,48 @@
   <main class="page__content" id="main-page">
 
     <h2><span class="fancy-text">Dýchej.</span> Vše ostatní přijde samo.</h2>
-    /*swiper*/
+
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <div class="swiper-slide">
+          <div class="article article-card">
+            <img src="#" alt="Náhledová fotografie k článku">
+            <div class="article-text">
+              <h3>Jóga jako prostor pro sebe</h3>
+              <p class="less">Jóga není jen cvičení na podložce. Je to tisíceletá filozofie, která propojuje tělo, dech a mysl. Učí nás zpomalit, vnímat přítomný okamžik a najít vnitřní rovnováhu. Ať už hledáte...</p>
+              <a class="link" target="_blank" href="#">Chci o józe vědět více →</a>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="article article-card">
+            <img src="#" alt="Náhledová fotografie k článku">
+            <div class="article-text">
+              <h3>Naše cesta začala zde, vaše může taky</h3>
+              <p class="less">Jsme rodinné jógové studio pro lidi se zájmem o zdravý pohyb, kteří stejně jako my vnímají, že jóga zdaleka není jen o cvičení ásan.</p>
+              <a class="icon-link map" target="_blank" href="https://maps.app.goo.gl/caBHJndX2LATne9t5">Rooseveltova 2786/3, 466 01  JBC</a>
+              <a class="icon-link facebook" target="_blank" href="https://www.facebook.com/savasanajablonec/?locale=cs_CZ">Šavásána studio</a>
+              <a class="link" target="_blank" href="#">Chci o vás vědět více →</a>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="article article-card">
+            <img src="#" alt="Náhledová fotografie k článku">
+            <div class="article-text">
+              <h3>Poprvé na podložce? Vše, co potřebujete vědět.</h3>
+              <p class="less">Na józe je krásné, že ji může začít praktikovat kdokoliv a v jakémkoliv věku. Forem jógy je totiž mnoho a každý si tu svou, která ho v daný moment na jeho cestě podpoří, může najít. Doporučujeme vyzkoušet různé...</p>
+              <a class="link" target="_blank" href="#">Číst celý článek →</a>
+            </div>
+          </div>
+        </div>
+        ...
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
     <article class="info-article">
       <img src="" alt="Žena meditující v přírodě.">
       <h3>Jóga jako prostor pro sebe</h3>
@@ -144,6 +186,20 @@
       document.getElementById('posledni-aktuality').textContent = 'Nelze načíst aktuality.';
       console.error(err);
     });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+  const swiper = new Swiper('.swiper', {
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
 </script>
 <script src="/scripts/hamburger.js"></script>
 </body>
