@@ -12,7 +12,7 @@
 		background-color: light-dark(var(--color-light), var(--color-dark));*/
 		--color-primary: #D95B06;
 		--color-secondary: #EF8D4B;
-		--color-light: #F7F7F7;
+		--color-light: #F5F5F5;
 		--color-dark: #000000;/*
 		--change-dark: light-dark(var(--color-dark), var(--color-light));
 		--change-light: light-dark(var(--color-light), var(--color-dark));
@@ -103,6 +103,32 @@
 	.menu-item:hover::after, .menu-item:hover::before {
 	transform: scaleX(1);
 	}
+	.link, .icon-link {
+		display: block;
+	}
+	.icon-link {
+		display: flex;
+		align-content: center;
+		margin: 0.7rem;
+	}
+	.icon-link:hover {
+		color: var(--color-primary);
+	}
+	.icon-link::before {
+		content: "";
+		display: inline-block;
+		background: center / contain no-repeat transparent;
+		width: 1.5rem;
+		height: 1.5rem;
+		padding-right: 2rem;
+	}
+	.icon-link.map::before {
+		background-image: url("/images/map-icon.svg");
+	}
+	.icon-link.facebook::before {
+		background-image: url("/images/icon-fb.svg");
+	}
+
 
 	.image--responsive {
 		width: 100%;
