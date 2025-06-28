@@ -11,11 +11,6 @@
         box-sizing: border-box;
     }
 
-    .article-card {
-        display: flex;
-        flex-direction: column;
-    }
-
     .article-card img{
         height: 180px;
     }

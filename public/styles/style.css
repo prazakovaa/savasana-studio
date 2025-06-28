@@ -51,18 +51,6 @@
 		color: var(--color-primary);
 		max-width: max-content;
 		margin: 0 auto;
-		position: relative;
-	}
-	.btn:after { 
-		content: "";
-		height: 100%; 
-		left: 0; 
-		top: 0; 
-		width: 0px;  
-		position: absolute; 
-		transition: all 0.3s ease 0s; 
-		-webkit-transition: all 0.3s ease 0s; 
-		z-index: -1;
 	}
 
 	.btn:hover:after{ width: 100%; }
@@ -105,6 +93,10 @@
 	}
 	.link, .icon-link {
 		display: block;
+	}
+	.link {
+		margin: 1rem;
+		color: var(--color-primary)	
 	}
 	.icon-link {
 		display: flex;
@@ -202,6 +194,52 @@
 	.header-logo-img{
 		width: 5rem;
 	}
+	.news .icon-link, .service .icon-link {
+		margin: 1rem auto;
+		width: max-content;
+	}
+	.icon-link span{
+		padding: 0 0.3rem;
+	}
+	.article {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+	.service {
+		text-align: center;
+		width: 90%;
+	}
+	.service-cardss {
+		display: flex;
+		gap: 2rem;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.service-card {
+		margin: 0 auto;
+    	max-width: 450px;
+	}
+	.service-card .article-text {
+		padding: 1rem;
+		background-color: white;
+	}
+	.service-card img {
+		height: 210px;
+	}
+	.service-card p, .service-card h3 {
+		padding-left: 1rem;
+	}
+	.service-card h3 {
+		font-family: Montserrat;
+		margin: 1rem 0 0 0;
+	}
+	.service h2 {
+		margin: 0;
+	}
+	.card-header {
+		border-bottom: 1px solid #B7B7B7;
+	}
 	.logo-nav {
 		width: 100px;
 	}
@@ -233,6 +271,20 @@
 	}
 
 	.header-top .btn{
+		margin: 0;
+	}
+	.service-card {
+		width: 350px;
+		margin: 0;
+	}
+	.service-header {
+		display: flex;
+		margin: 1.5rem auto;
+		justify-content: space-between;
+		align-content: center;
+		max-width: 1400px;
+	}
+	.service-header a {
 		margin: 0;
 	}
 
