@@ -1,9 +1,10 @@
 @layer swiper {
 
-    .swiper {
+    .swiper{
     width: 97%;
     height: 500px; /* nebo co potřebuješ */
     position: relative;
+    overflow: hidden;
     }
 
     .swiper-slide {
@@ -23,11 +24,6 @@
         filter: invert(100%);
     }
 
-    .swiper {
-  position: relative;
-  overflow: hidden;
-}
-
 .swiper-button-prev,
 .swiper-button-next {
   position: absolute;
@@ -46,6 +42,12 @@
 
 .swiper-button-next {
   right: 10px;
+}
+
+@media (min-width: 1080px) {
+  .swiper{
+    display: none !important;
+  }
 }
     
 
