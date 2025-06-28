@@ -1,9 +1,11 @@
-@layer reset, typo, init, components, swiper, design, news, hamburger;
+@layer reset, typo, init, components, swiper, design, news, hamburger, dropdown;
 @import "normalize.css";
 @import "typography.css";
 @import "news.css";
 @import "hamburger.css";
 @import "swiper.css";
+@import "dropdown.css";
+
 @layer init {
 
 	:root {
@@ -278,6 +280,10 @@
 	}
 	.logo-nav {
 		width: 100px;
+	}
+
+	.asked {
+		text-align: left;
 	}
 	.only-desktop {
   display: none;
