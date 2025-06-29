@@ -35,11 +35,24 @@
   		font-weight: 400;
   		font-style: normal;
 	}
+	.description {
+		font-size: 0.75rem;
+		margin-bottom: -1.7rem;
+		font-weight: 550;
+		color: var(--color-primary);
+	}
+	h1 {
+		color: var(--color-primary);
+		font-family: 'Unna', serif;
+		font-size: 40px;
+		font-weight: 700;
+	}
 	h2 {
 		color: var(--color-dark);
 		font-family: 'Unna', serif;
 		font-size: 24px;
 		font-weight: 400;
+		padding-top: 2rem;
 	}
 	h3, h4 {
 		font-family: 'Unna', serif;
