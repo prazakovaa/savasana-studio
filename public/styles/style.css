@@ -52,21 +52,22 @@
 @layer components {
 	.btn {
 		display: inline-block;
-		padding: 0.7rem 2rem;
-		border-radius: 5px;
-		border: 2px solid var(--color-primary);
+		padding: 0.5rem 2rem;
+		border-radius: 50px;
+		border: 1.5px solid var(--color-primary);
 		color: var(--color-primary);
 		max-width: max-content;
 		margin: 0 auto;
-		background-color: rgba(239, 141, 75, 0);
+		background-color: rgba(252, 253, 255, 0.30);
 		transition: background-color 0.2s ease-in-out;
 	}
 
-	.btn:hover{ background-color: rgba(239, 141, 75, 0.5);} 
+	.btn:hover{ background-color: rgba(242, 169, 120, 0.5);} 
 
 	.btn--white{
-		border: 2px solid var(--color-light);
+		border: 1.5px solid var(--color-light);
 		color: var(--color-light);
+		background-color: rgba(252, 253, 255, 0);
 	}
 	.btn--white:hover{
 		background-color: rgba(255, 255, 255, 0.2);
@@ -200,18 +201,19 @@
 		justify-content: space-between;
 	}
 	.header__main p {
-		font-size: 0.8rem;
+		font-size: 1rem;
 		margin: 0;
 	}
 	.header__main h1 {
-		font-family: Bellefair;
-		font-size: 3rem;
+		font-family: Unna;
+		font-size: 3.2rem;
 		font-weight: 400;
 		margin: 0;
 		color: var(--color-primary);
 		position: relative;
 		margin: 0 1rem 1rem 0;
 		display: inline-block;
+		line-height: 1.2;
 	}
 	.header__main span {
 		color: var(--color-secondary);
@@ -393,9 +395,6 @@
 		width: 30%;
 		object-fit: cover;
 	}
-
-
-
 	.only-desktop {
   display: none;
 }
@@ -406,8 +405,10 @@
 
     .page__header{
 		height: 97vh;
+		padding: 0;
+		padding-bottom: 1.5rem;
 		background:
-  			radial-gradient(95.33% 90.41% at 76.51% 0%, rgba(115, 115, 115, 0.00) 0%, #F5F5F5 100%),
+  			radial-gradient(140.56% 111.32% at 120.28% 15.59%, rgba(115, 115, 115, 0.00) 0%, #F5F5F5 100%),
   			url('/images/header-bg.avif'); 
 		background-size: cover;
 		background-position: center;
@@ -415,16 +416,21 @@
 	}
 
 	.header__main{
-		height: 35vh;
+		height: 40vh;
 		display: flex;
 		flex-direction: column;
 		text-align: start;
-		justify-content: end;
+		justify-content: start;
 		margin: 6rem 5rem;
+		gap: 2rem;
 	}
 
-	.header-top .btn{
+	.header__main .btn{
 		margin: 0;
+	}
+	.header__main h1{
+		margin-bottom: -1rem;
+		font-size: 54px;
 	}
 	.service-card {
 		width: 350px;

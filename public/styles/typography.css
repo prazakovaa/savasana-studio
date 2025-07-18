@@ -34,12 +34,17 @@
   		font-family: 'Birthstone Bounce', 'Brush Script MT', cursive;
   		font-weight: 400;
   		font-style: normal;
+		font-size: smaller;
 	}
 	.description {
 		font-size: 0.75rem;
 		margin-bottom: -1.7rem;
 		font-weight: 550;
 		color: var(--color-primary);
+	}
+	menu h1 {
+		font-size: 32px;
+		color: var(--color-light);
 	}
 	h1 {
 		color: var(--color-primary);

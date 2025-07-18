@@ -126,34 +126,24 @@
 
     .hamburger-nav {
         position: static;
-        margin: 1.5rem auto;
         display: flex;
-		width: 70%;
-        height: 37px;
-		padding: 0 .8rem;
-		justify-content: center;
+		padding: 0 4%;
+		justify-content: space-between;
 		align-items: center;
-		gap: 5%;
-		border-radius: 32px;
-        background-color: rgba(255, 255, 255, 0.35);
+        background: linear-gradient(90deg, rgba(217, 91, 6, 0.60) 0%, rgba(225, 155, 108, 0.60) 100%);
         overflow: visible;
     }
 
-    .hamburger-nav span {
-        display: inline-block;
-        width: 10%;
-        height: 270%;
-        background-image: url('/images/logo.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        overflow: visible;
+    .links {
+        align-content: center;
+        display: flex;
+        gap: 2.5rem;
     }
-
-    
+    .menu-item{
+        align-content: center;
+    }
     .nav .hamburger-nav {
         position: static;
-        margin: 1.5rem auto;
         display: flex;
 		width: 90%;
 		padding: 0 .8rem;
