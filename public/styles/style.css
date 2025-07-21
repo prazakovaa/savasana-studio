@@ -180,11 +180,20 @@
 		flex-direction: column;
 		justify-content: space-between;
 		background:
-  			linear-gradient(172deg, rgba(255, 255, 255, 0.97) 34.54%, rgba(115, 115, 115, 0.00) 149.84%),
+  			radial-gradient(76.97% 59.34% at 73.44% 30.89%, rgba(115, 115, 115, 0.00) 0%, #F5F5F5 100%),
   			url('/images/header-bg.jpg');                                
 		background-size: cover;
 		background-position: center;
 		padding: 1.5rem;
+	}
+	.header__main .btn {
+		padding-right: 3.5rem;
+		position: relative;
+	}
+	.page__header .btn svg {
+		position: absolute;
+		right: 0.2px;
+		top: 0.2px;
 	}
 	.header__nav {
 		all: unset;
@@ -230,6 +239,9 @@
 	.header-logo-img{
 		width: 5rem;
 	}
+	.news {
+		margin: 7vh 0;
+	}
 	.news .icon-link, .service .icon-link {
 		margin: 1rem auto;
 		width: max-content;
@@ -249,6 +261,7 @@
 		flex-direction: row;
 		max-width: 1400px;
 		height: 200px;
+		background-color: white;
 	}
 	.section-bigger {
 		height: 240px;
@@ -290,6 +303,7 @@
 	.service-card {
 		margin: 0 auto;
     	max-width: 450px;
+		position: relative;
 	}
 	.service-card .article-text {
 		padding: 1rem;
@@ -297,6 +311,12 @@
 	}
 	.service-card img {
 		height: 210px;
+	}
+	.stars {
+		background-color: var(--color-primary);
+		width: max-content;
+		position: absolute;
+		right: 10%;
 	}
 	.service-card p, .service-card h3 {
 		padding-left: 1rem;
@@ -335,9 +355,11 @@
 		border-left: 5px solid var(--color-primary);
 	}
 	.page__footer{
-		background: linear-gradient(112deg, rgba(217, 91, 6, 0.80) -0.01%, rgba(217, 91, 6, 0.20) 72.82%);
+		color: white;
+		background: url('/images/footer-bg.png');
+		background-position: right top;
 		margin-top: 4rem;
-		padding: 2rem 0;
+		padding: 230px 0 2rem 0;
 		margin-bottom: -1rem;
 		display: flex;
 		flex-direction: column;
