@@ -130,7 +130,7 @@
 		padding: 0 4%;
 		justify-content: space-between;
 		align-items: center;
-        background: linear-gradient(90deg, rgba(217, 91, 6, 0.60) 0%, rgba(225, 155, 108, 0.60) 100%);
+        background: linear-gradient(90deg, rgba(217, 91, 6, 0.8) 0%, rgba(225, 155, 108, 0.89) 100%);
         overflow: visible;
     }
 

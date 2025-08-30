@@ -317,6 +317,7 @@
 		width: max-content;
 		position: absolute;
 		right: 10%;
+		padding: 0.2rem 0.5rem;
 	}
 	.service-card p, .service-card h3 {
 		padding-left: 1rem;
@@ -370,11 +371,14 @@
 		padding: 1rem 0;
 		width: 65%;
 		max-width: 650px;
-		border-top: 1px solid var(--color-primary);
-		border-bottom: 1px solid var(--color-primary);
+		border-top: 1px solid var(--color-light);
+		border-bottom: 1px solid var(--color-light);
 	}
 	.page__footer .text {
-		color: var(--color-primary);
+		color: var(--color-light);
+	}
+	.footer-main .icon-link {
+		color: var(--color-light);
 	}
 	.footer-main{
 		display: flex;
@@ -383,6 +387,10 @@
 	}
 	.copyright {
 		font-size: 0.8rem;
+		color: var(--color-light);
+	}
+	.copyright a {
+		color: var(--color-light);
 	}
 
 	/* OSTATNI HTML */
@@ -416,6 +424,9 @@
 		height: 20vh;
 		width: 30%;
 		object-fit: cover;
+	}
+	.rezervace {
+		display: none;
 	}
 	.only-desktop {
   display: none;
@@ -463,10 +474,36 @@
 		width: 100%;
 		margin: 1.5rem auto;
 		justify-content: space-between;
-		align-content: center;
+		align-items: center;
 	}
 	.service-header a {
 		margin: 0;
+	}
+	.rezervace {
+		display: flex;
+		width: 650px;
+		justify-content: space-between;
+		align-items: center;
+		color: white;
+	}
+	.rezervace p.big-text {
+		color: white;
+		font-size: 40px;
+		margin: 0.3rem;
+	}
+	.statistika{
+		margin-left: 3rem;
+	}
+	.statistika p {
+		color: white;
+		font-size: 24px;
+	}
+	.CTA{
+		width: 250px;
+	}
+	.CTA p {
+		color: white;
+		font-size: 16px;
 	}
 }
 }
