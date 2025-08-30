@@ -174,7 +174,7 @@
 }
 @layer design {
 
-	.page__header{
+	.page__header-main{
 		height: 80vh;
 		display: flex;
 		flex-direction: column;
@@ -185,10 +185,6 @@
 		background-size: cover;
 		background-position: center;
 		padding: 1.5rem;
-	}
-	.header__main .btn {
-		padding-right: 3.5rem;
-		position: relative;
 	}
 	.page__header .btn svg {
 		position: absolute;
@@ -317,7 +313,7 @@
 		width: max-content;
 		position: absolute;
 		right: 10%;
-		padding: 0.2rem 0.5rem;
+		padding: 0.1rem 0.3rem;
 	}
 	.service-card p, .service-card h3 {
 		padding-left: 1rem;
@@ -407,11 +403,17 @@
 		display: flex;
 	}
 
-	.header .header-text {
+	.clanek-body {
+		margin: -1rem 2rem;
+		padding: 2rem 2rem;
+		background-color: white;
+	}
+
+	.header-text {
 		width: 75%;
 		padding: 1rem 2.5rem;
 		background-color: white;
-		margin: 0 auto;
+		margin: 0 auto -1rem;
 	}
 
 	.images {
@@ -436,7 +438,7 @@
 	.only-desktop { display: block; }
     .only-mobile { display: none; }
 
-    .page__header{
+    .page__header-main{
 		height: 97vh;
 		padding: 0;
 		padding-bottom: 1.5rem;
@@ -446,6 +448,12 @@
 		background-size: cover;
 		background-position: center;
 		background-repeat: no-repeat;
+	}
+
+	.page__header {
+		height: auto;
+		padding: 0;
+		padding-bottom: 1.5rem;
 	}
 
 	.header__main{
@@ -459,7 +467,12 @@
 	}
 
 	.header__main .btn{
+		position: relative;
 		margin: 0;
+		display: flex;
+		gap: 1rem;
+        align-items: center;
+		justify-content: space-between;
 	}
 	.header__main h1{
 		margin-bottom: -1rem;
@@ -488,15 +501,16 @@
 	}
 	.rezervace p.big-text {
 		color: white;
-		font-size: 40px;
-		margin: 0.3rem;
+		font-size: 32px;
+		margin: 0rem;
 	}
 	.statistika{
 		margin-left: 3rem;
 	}
 	.statistika p {
 		color: white;
-		font-size: 24px;
+		font-size: 20px;
+		margin: 0.2rem;
 	}
 	.CTA{
 		width: 250px;

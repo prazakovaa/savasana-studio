@@ -60,4 +60,42 @@
 		margin: auto 0;
 		border-radius: 20rem;
   }
+
+  .vsechny-aktuality {
+    margin: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+
+  .vsechny-aktuality article {
+    max-width: 480px;
+    min-width: 300px;
+    height: auto;
+    color: black;
+    overflow: hidden;
+    margin: 1rem;
+    background-color: white;
+    box-shadow: 4px 5px 4px 0px rgba(0, 0, 0, 0.05);
+}
+
+/* obrázek */
+.vsechny-aktuality img {
+  width: 100%;
+    height: auto;
+}
+
+/* text */
+.vsechny-aktualita p {
+  margin: 1rem;
+  font-size: 16px;
+}
+.vsechny-aktuality h2 + p {
+    font-size: 1rem;
+    opacity: 80%;
+    margin: 1rem;
+}
+.vsechny-aktuality h2 {
+    font-size: 1.3em;
+    margin-left: 1rem;
+  }
 }

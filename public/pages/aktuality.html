@@ -10,14 +10,47 @@
   <link rel="stylesheet" href="../styles/style.css" />
 </head>
 <body>
-  <h1>Aktuality</h1>
-  <div class="aktuality" id="aktuality"></div>
+    <header class="page__header">
+  <nav class="header__nav">
+    <a class="header-logo" href="../index.html" aria-label="Domů">
+      <img class="header-logo-img img-responsive only-mobile" src="images/logo.png" alt="Šavásana studio logo">
+    </a>
+   
+    <div class="page__header-hamburger hamburger-row">
+      <button class="hamburger hamburger-btn hamburger-zone" aria-label="Otevřít menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <menu class="page__header-menu hamburger-nav hamburger-zone">
+      <a href="../index.html"><h1 class="only-desktop">ŠAVÁSÁNA <span class="fancy-text">  studio</span></h1></a>
+      <div class="links">
+      <li class="menu-item"><a href="/pages/kodex-studia.html" class="menu-link">Kodex studia</a></li>
+      <li class="menu-item"><a href="/pages/lekce.html" class="menu-link">Lekce</a></li>
+      <li class="menu-item"><a href="/pages/cenik.html" class="menu-link">Ceník</a></li>
+      <li class="menu-item only-mobile"><a href="/pages/o-nas.html" class="menu-link">O nás</a></li>
+      <li class="menu-item active"><a href="/pages/aktuality.html" class="menu-link">Aktuality</a></li>
+      <li class="menu-item"><a href="/pages/kontakt.html" class="menu-link">Kontakt</a></li>
+      <li><a href="/pages/kontakt.html" class="btn btn--white">Rezervace</a></li>
+    </div>
+    </menu>
+   </nav>
+    <div class="header-image aktuality">
+    <div class="header-text">
+      <p class="description">Aktuality</p>
+      <h1>Seznam toho nejakutálnějšího</h1>
+      <p>Pro více aktualit a denních příspěvků nás sledujte na našem  <a href="https://www.facebook.com/savasanajablonec/" class="color">facebooku</a>.</p>
+    </div>
+    </div>
+  </header>
+  <div class="vsechny-aktuality" id="vsechny-aktuality"></div>
 
 <script>
-  fetch('data/aktuality.json')
+  fetch('../data/aktuality.json')
     .then(res => res.json())
     .then(data => {
-      const container = document.getElementById('posledni-aktuality');
+      const container = document.getElementById('vsechny-aktuality');
 
       if (data.length === 0) {
         container.textContent = 'Žádné aktuality.';
@@ -37,7 +70,7 @@
       });
     })
     .catch(err => {
-      document.getElementById('posledni-aktuality').textContent = 'Nelze načíst aktuality.';
+      document.getElementById('vsechny-aktuality').textContent = 'Nelze načíst aktuality.';
       console.error(err);
     });
 </script>
